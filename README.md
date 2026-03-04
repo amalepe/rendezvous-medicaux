@@ -1,59 +1,51 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# rendezvous-medicaux
+Projet de gestion de rendez-vous médicaux développé avec Laravel, React et MySQL, permettant aux patients de réserver un créneau et aux médecins de confirmer ou d’annuler les rendez-vous, avec notification par email.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Objectif principal : simplifier la prise de rendez-vous, suivre l’état des réservations et améliorer la communication entre les deux profils d’utilisateurs.
+2. Technologies utilisées
+•	Backend : Laravel
+•	Frontend : React
+•	Base de données : MySQL
+•	Authentification : Sanctum
+•	Envoi d’e-mails : Mailtrap (mode test)
+3. Profils utilisateurs
+L’application contient deux profils principaux :
+•	Patient : consulte les médecins, affiche les créneaux disponibles, réserve un rendez-vous et annule si nécessaire.
+•	Médecin : consulte les rendez-vous reçus, confirme ou annule une demande, et déclenche l’envoi d’un e-mail au patient.
+4. Fonctionnalités principales
+•	Connexion sécurisée selon le rôle utilisateur.
+•	Affichage de la liste des médecins.
+•	Consultation des créneaux disponibles par médecin.
+•	Réservation d’un rendez-vous par le patient.
+•	Affichage de l’état du rendez-vous côté patient.
+•	Confirmation ou annulation côté médecin.
+•	Notification par e-mail après confirmation ou annulation.
+5. Logique du processus
+1.	Le patient se connecte à l’application.
+2.	Il choisit un médecin puis un créneau disponible.
+3.	Le rendez-vous est créé avec le statut patient = reserve et le statut médecin = en attente.
+4.	Le médecin se connecte et consulte la liste des rendez-vous.
+5.	Le médecin peut confirmer ou annuler la demande.
+6.	Le patient voit ensuite le résultat : en attente, confirmé ou annulé.
+7.	Un e-mail de notification peut être envoyé automatiquement après confirmation ou annulation de rendez vous
+6. Comptes de connexion
+Remarque : remplacez les exemples ci-dessous par les vrais comptes créés dans vos seeders ou dans votre base de données.
+Profil	E-mail / Login	Mot de passe	Rôle
+Patient	Areej@test.com	12345678	Réserver et annuler un rendez-vous
+Médecin	Yahya@doc.com	12345678	Confirmer ou annuler un rendez-vous
 
-## About Laravel
+Conseil : si vous utilisez des seeders, ajoutez au moins un compte patient et un compte médecin pour faciliter les démonstrations et les tests.
+7. Données recommandées pour la démonstration
+•	1 médecin avec spécialité et téléphone.
+•	1 patient avec compte utilisateur actif.
+•	Quelques créneaux disponibles.
+•	Au moins un rendez-vous en attente.
+•	Un rendez-vous confirmé et un rendez-vous annulé pour illustrer les différents états.
+8. Scénarios de test
+•	Connexion patient → affichage des médecins → réservation d’un créneau.
+•	Connexion médecin → affichage des rendez-vous → confirmation d’une demande.
+•	Connexion médecin → annulation d’une demande → vérification de l’e-mail.
+•	Connexion patient → consultation du statut final du rendez-vous.
+9. Conclusion
+Ce projet montre la mise en place d’un système complet de gestion de rendez-vous médicaux. Il combine authentification, gestion des rôles, réservation, validation métier, mise à jour des statuts et notification par e-mail. C’est une bonne base pour un projet de PFE, de portfolio ou de démonstration technique.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

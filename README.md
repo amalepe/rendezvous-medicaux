@@ -33,8 +33,6 @@ Remarque : remplacez les exemples ci-dessous par les vrais comptes créés dans 
 Profil	E-mail / Login	Mot de passe	Rôle
 Patient	Areej@test.com	12345678	Réserver et annuler un rendez-vous
 Médecin	Yahya@doc.com	12345678	Confirmer ou annuler un rendez-vous
-
-Conseil : si vous utilisez des seeders, ajoutez au moins un compte patient et un compte médecin pour faciliter les démonstrations et les tests.
 7. Données recommandées pour la démonstration
 •	1 médecin avec spécialité et téléphone.
 •	1 patient avec compte utilisateur actif.
